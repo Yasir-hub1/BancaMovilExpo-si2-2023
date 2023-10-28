@@ -52,14 +52,7 @@ const CustomModal = ({ visible, onClose, typeBtn, navigation }) => {
                     <View style={[styles.viewBtnOptions, { justifyContent: "center" }]}>
 
 
-                        <TouchableOpacity style={styles.btnOptions} onPress={() => navigationScreenOptions(config.routes.ViewSpecies)}>
-                            <Image
-                                source={img.wood}
-                                style={[styles.image, { width: 55 }]}
-                            />
-                            <Text style={styles.txtTitleOptions}>VER ESPECIES</Text>
-                        </TouchableOpacity>
-
+                       
                     </View>
 
                     <TouchableOpacity style={styles.btnClose} onPress={() => onClose()}>

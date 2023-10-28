@@ -38,18 +38,18 @@ export const userSlices = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      const { user, userToken } = action.payload;
+      const { user,token } = action.payload;
       state.user = user;// alamcena en el state lo que recibe desde la vista
-      state.userToken = userToken;
+      state.userToken = token;
     },
     logout: (state) => {
       state.user = null;
       state.userToken = null;
     },
     restoreToken: (state, action) => {
-      const { user, userToken } = action.payload;
+      const { user, token } = action.payload;
       state.user = user;// alamcena en el state lo que recibe desde la vista
-      state.userToken = userToken;
+      state.userToken = token;
     }
 
   }

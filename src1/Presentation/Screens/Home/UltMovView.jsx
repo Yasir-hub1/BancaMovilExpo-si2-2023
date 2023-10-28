@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function CreateQuotation() {
+const UltMovView = () => {
   return (
     <View>
-      <Text>CreateQuotation</Text>
+      <Text>UltMov</Text>
     </View>
   )
 }
+
+export default UltMovView
 
 const styles = StyleSheet.create({})

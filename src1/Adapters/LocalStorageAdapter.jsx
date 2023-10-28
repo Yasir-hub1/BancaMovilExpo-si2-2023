@@ -5,9 +5,10 @@ import { config } from '../Config';
 
 
  async function saveUserData(userData) {
+  
   try {
-    await setItemAsync(config.USER_KEY, userData.user);
-    await setItemAsync(config.USER_TOKEN_KEY, userData.userToken);
+    await setItemAsync(config.USER_KEY, JSON.stringify(userData.user));
+    await setItemAsync(config.USER_TOKEN_KEY, userData.token);
   } catch (error) {
     console.error('Error al guardar los datos del usuario de manera local:', error);
   }
@@ -19,7 +20,7 @@ import { config } from '../Config';
     const UserTokenKey=await getItemAsync(config.USER_TOKEN_KEY);
 
     if (userData && UserTokenKey) {
-      return {user:userData,userToken:UserTokenKey};
+      return {user:JSON.parse(userData),token:UserTokenKey};
     }
   } catch (error) {
     console.error('Error al cargar los datos del usuario desde AsyncStorage:', error);

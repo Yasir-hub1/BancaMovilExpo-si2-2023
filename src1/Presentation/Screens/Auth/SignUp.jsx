@@ -1,158 +1,62 @@
-import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView, View, Text, TouchableOpacity, Alert, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import LottieView from 'lottie-react-native';
+import React, { useState } from "react";
+import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Alert } from 'react-native';
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { Ionicons } from '@expo/vector-icons';
+
 import { config } from "../../../Config";
 import CustomButton from '../../Components/Button/CustomButton';
-import InputField from '../../Components/Inputs/InputField';
+import { Ionicons } from '@expo/vector-icons';
 // import { AuthContext } from '../../context/AuthContext';
 import { useDispatch } from "react-redux";
 import { authAdapter } from "../../../Adapters/AuthAdapter";
 import { Avatar } from "react-native-elements";
+import TextInputField from "../../Components/Inputs/TextInputField";
+import { useForm } from "react-hook-form";
+import { Image as img } from "../../Assets/Image/path";
+import PassInputField from "../../Components/Inputs/PassInputField";
+import { ToastAndroid } from "react-native";
 
 
-
-
-const Login = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
 
     const dispatch = useDispatch();
 
-    //TODO: Inicializacion de Onboarding
-    /*  useEffect(() => {
-       iniciarOnboarding()
-     }, []);
-     
-     // funcion para guardar localmente el onboarding
-     async function iniciarOnboarding(){
-       const iniciarOnboarding =await AsyncStorage.getItem('@onboarding');
-       if (iniciarOnboarding) {
-         return;
-       }else{
-         await AsyncStorage.setItem('@onboarding','true');
-         navigation.navigate('Onboarding');
-       }
-     } */
 
-    //FIN
+    // proteccion de contraseña
+    const [secureEntry, setSecureEntry] = useState(true);
 
-    //*******------para el Login------*********
+    const toggleSecureEntry = () => {
+        setSecureEntry(!secureEntry);
+    };
 
 
+    /* Errores de formulario */
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    const SingIng = async (user, pass) => {
-        console.log("Vista login");
-        let userData =
-        {
-            user: user,
-            pass: pass,
-            userToken: "dasdasfdsgwegeqwtgwer"
-        }
+
+    const signUp = async (data) => {
+        console.log("Vista  registro", data);
+
         try {
 
-            await authAdapter.loginAdapter(dispatch, userData);
+            let resp = await authAdapter.SingUpdapter(data);
+            console.log("res Front crear ", resp.usuario)
+            if(resp.usuario){
+                Alert.alert("cuenta creada");
+                navigation.navigate(config.routes.Login);
+            }
 
         } catch (error) {
-            console.log("fron login ", error);
+            console.log("fron login ", error.message);
         }
     }
 
 
-    const [StateForm, setStateForm] = useState(0);
-
-    const HandleLogin = () => {
-        const [email, setEmail] = useState();
-        const [password, setPassword] = useState();
-        return (
-            <>
-                <InputField
-                    label={'Nombre de la Empresa'}
-                    onChangeText={value => setEmail(value)}
-                    icon={
-                        <MaterialIcons
-                            name="people-outline"
-                            size={20}
-                            color={"red"}
-                            style={{ marginRight: 5 }}
-                        />
-                    }
-                    keyboardType="email-address"
-                />
-
-                <InputField
-                    label={'Nit'}
-                    onChangeText={value => setPassword(value)}
-                    icon={
-                        <Ionicons
-                            name="ios-lock-closed-outline"
-                            size={20}
-                            color={"red"}
-                            style={{ marginRight: 5 }}
-                        />
-                    }
-                    inputType="password"
-                />
-                <InputField
-                    label={'Telefono'}
-                    onChangeText={value => setPassword(value)}
-                    icon={
-                        <Ionicons
-                            name="ios-lock-closed-outline"
-                            size={20}
-                            color={"red"}
-                            style={{ marginRight: 5 }}
-                        />
-                    }
-                    inputType="password"
-                />
-
-                
-
-                <InputField
-                    label={'Usuario'}
-                    onChangeText={value => setPassword(value)}
-                    icon={
-                        <Ionicons
-                            name="ios-lock-closed-outline"
-                            size={20}
-                            color={"red"}
-                            style={{ marginRight: 5 }}
-                        />
-                    }
-                    inputType="password"
-                />
-
-                <InputField
-                    label={'Contraseña'}
-                    onChangeText={value => setPassword(value)}
-                    icon={
-                        <Ionicons
-                            name="ios-lock-closed-outline"
-                            size={20}
-                            color={"red"}
-                            style={{ marginRight: 5 }}
-                        />
-                    }
-                    inputType="password"
-                />
-
-                
-              
-
-                <CustomButton
-                    label={'Iniciar'}
-                    color={config.COLOR_RED}
-                    onPress={() => SingIng(email,
-                        password)}
-                    padding={15}
-                />
-
-
-
-            </>
-        );
-    };
 
 
 
@@ -161,34 +65,9 @@ const Login = ({ navigation }) => {
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : null}
 
             >
-                <ScrollView style={{ paddingHorizontal: 25,top:5 }}>
-                    <View style={{ alignItems: 'center' }}>
-                        {/* portada */}
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-around',
-                                marginBottom: 20,
-                            }}
-                        >
-                            
-                            <Avatar
-                                size={150}
-                                rounded
-                                source={require('../../Assets/Image/Company/add-photo.png')}
-                                title="WorkCorp"
-                                containerStyle={{ backgroundColor: config.COLOR_WHITE ,width:150,alignSelf:"center"}}
-                                onPress={()=> console.log("logo")}
-                                avatarStyle={{ width:150 ,height:150}}
-                            >
-                                <Avatar.Accessory size={30} style={{ backgroundColor:config.COLOR_RED }} />
-                            </Avatar>
-                               
-                        </View>
+                <ScrollView style={{ paddingHorizontal: 25, top: 5 }}>
 
 
-
-                    </View>
 
 
                     <Text
@@ -200,18 +79,79 @@ const Login = ({ navigation }) => {
                             marginBottom: 30,
                             color: config.COLOR_RED,
                             marginBottom: 20,
-                            justifyContent: "flex-start",
-                            alignSelf: "flex-start"
+                            justifyContent: "center",
+                            alignSelf: "center"
                         }}
                     >
-                        Registra tu Empresa
+                        Registrate
                     </Text>
 
 
 
+                    <TextInputField
+                        label={'Usuario'}
+                        name="username"
+                        required={true}
+                        control={control}
+                        errors={errors}
+                        minLength={2}
+                        maxLength={20}
+                        keyboardType="default"
+                        styleErrorValidate={styles.errorValidacion}
+                        icon={
+                            <MaterialIcons
+                                name="business"
+                                size={20}
+                                color={"red"}
+                                style={{ marginRight: 5 }}
+                            />
+                        }
+
+                    />
 
 
-                    <HandleLogin />
+
+
+
+
+
+                    <PassInputField
+                        label='Contraseña'
+                        name="password"
+                        control={control}
+                        errors={errors}
+                        minLength={2}
+                        maxLength={20}
+
+                        secureEntry={secureEntry}
+                        toggleSecureEntry={toggleSecureEntry}
+                        styleErrorValidate={styles.errorValidacion}
+
+                        icon={
+                            <Ionicons
+                                name="ios-lock-closed-outline"
+                                size={20}
+                                color={"red"}
+                                style={{ marginRight: 5 }}
+                            />
+                        }
+
+
+                    />
+
+
+
+
+                    <CustomButton
+                        label={'Iniciar'}
+                        color={config.COLOR_RED}
+                        onPress={handleSubmit(signUp)}
+                        padding={15}
+                    />
+
+
+
+
 
                     <View
                         style={{
@@ -225,7 +165,7 @@ const Login = ({ navigation }) => {
                             <View style={{ marginLeft: 40 }} />
                             <Text style={{ color: '#fe5000', fontWeight: '700' }}>
                                 {' '}
-                                Regístrate
+                                Iniciar sesion
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -236,7 +176,7 @@ const Login = ({ navigation }) => {
     );
 };
 
-export default Login;
+export default SignUp;
 
 const styles = StyleSheet.create({
     container: {
@@ -268,5 +208,15 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
 
 
-    }
+    },
+    errorValidacion: {
+        color: "#dd3333",
+        fontSize: 15,
+        top: -10,
+        justifyContent: "center",
+        textAlign: "center",
+        alignSelf: "center",
+        alignItems: "center",
+
+    },
 });

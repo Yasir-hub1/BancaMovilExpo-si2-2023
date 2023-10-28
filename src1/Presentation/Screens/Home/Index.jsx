@@ -1,7 +1,7 @@
 import Home from "./Home";
-import CreateQuotation from "./QuotationScreens/CreateQuotation";
-import ListViewQuotation from "./QuotationScreens/ListViewQuotation";
-import ListViewSpecies from "./SpeciesScreens/ListViewSpecies";
+import CobrarQr from "./Qrs/CobrarQr";
+import PagarQr from "./Qrs/PagarQr";
+
 import ViewProfile from "../Profile/ViewProfile";
 import ListViewContacts from "./ContactScreens/ListViewContacts";
 import CreateContacts from "./ContactScreens/CreateContacts";
@@ -10,9 +10,8 @@ import ViewUser from "../Profile/ViewUser";
 import ViewCompany from "../Profile/ViewCompany";
 export {
     Home,
-    CreateQuotation,
-    ListViewQuotation,
-    ListViewSpecies,
+    CobrarQr,
+    PagarQr,
 
 
     /* VIEWS CONTACT */

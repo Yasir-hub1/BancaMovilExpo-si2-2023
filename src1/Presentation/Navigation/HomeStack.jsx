@@ -5,17 +5,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { config } from '../../Config';
 import {
-  CreateQuotation,
   Home,
-  ListViewQuotation,
-  ListViewSpecies,
+  
   ListViewContacts,
   CreateContacts,
   ViewProfile,
   ViewInfoWK,
   ViewUser,
-  ViewCompany
+  ViewCompany,
+  CobrarQr,
+  PagarQr
 } from '../Screens/Home/Index';
+import UltMovView from '../Screens/Home/UltMovView';
 
 
 const Stack = createNativeStackNavigator();
@@ -48,18 +49,14 @@ function HomeStack() {
       {/* SCREEN BTN COTIZACIONES */}
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
 
-        <Stack.Screen name={config.routes.CreateQuotation} component={CreateQuotation} />
-        <Stack.Screen name={config.routes.ListViewQuotation} component={ListViewQuotation} />
-
-
-      </Stack.Group>
-
-
-      {/* SCREEN ESPCIES */}
-      <Stack.Group screenOptions={{ presentation: 'modal' }} >
-        <Stack.Screen name={config.routes.ViewSpecies} component={ListViewSpecies} />
+        <Stack.Screen name={config.routes.CobrarQr} component={CobrarQr} />
+        <Stack.Screen name={config.routes.PagarQr} component={PagarQr} />
+        <Stack.Screen name={config.routes.UltMovView} component={UltMovView} />
 
       </Stack.Group>
+
+
+      
 
       {/* SCREENN CONTACS */}
 

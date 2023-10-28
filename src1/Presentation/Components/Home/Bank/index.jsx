@@ -1,8 +1,8 @@
 import CardTotalQuote from "./CardTotalQuote";
 import CustomBtn from "./CustomBtn";
-import RecentQuotesList from "./RecentQuotesList";
+import UlMov from "./UltMov";
 export {
     CardTotalQuote,
     CustomBtn,
-    RecentQuotesList
+    UlMov
 }

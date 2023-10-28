@@ -5,7 +5,7 @@ import filter from 'lodash.filter';
 import { config } from '../../../../Config';
 
 const API = "https://randomuser.me/api/?results=30";
-const RecentQuotesList = ({navigation}) => {
+const UltMov = ({navigation}) => {
 
     const [isLoading, setisLoading] = useState(false);
     const [Data, setData] = useState([]);
@@ -49,7 +49,7 @@ const RecentQuotesList = ({navigation}) => {
 
             <View style={styles.header}>
                 <Text style={styles.txtHeader}>Ultimos Movimientos</Text>
-                <TouchableOpacity onPress={()=>navigationScreen(config.routes.ListViewQuotation)}>
+                <TouchableOpacity onPress={()=>navigationScreen(config.routes.UltMovView)}>
                     <Text style={styles.txtViewMore}>Ver más</Text>
                 </TouchableOpacity>
             </View>
@@ -80,7 +80,7 @@ const RecentQuotesList = ({navigation}) => {
     )
 }
 
-export default RecentQuotesList
+export default UltMov
 
 const styles = StyleSheet.create({
     header: {

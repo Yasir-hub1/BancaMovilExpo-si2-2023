@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ListViewSpecies = () => {
+const PagarQr = () => {
   return (
     <View>
-      <Text>ListViewSpecies</Text>
+      <Text>PagarQr</Text>
     </View>
   )
 }
 
-export default ListViewSpecies
+export default PagarQr
 
 const styles = StyleSheet.create({})

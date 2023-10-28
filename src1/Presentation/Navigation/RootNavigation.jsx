@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getItemAsync } from 'expo-secure-store';
 import { localStorage } from '../../Adapters/LocalStorageAdapter';
 import { authAdapter } from '../../Adapters/AuthAdapter';
+import { restoreToken } from '../Redux/Reducers/userReducer';
 
 const RootNavigation = () => {
 
@@ -20,7 +21,7 @@ const RootNavigation = () => {
         const resp = await localStorage.loadUserData();
         console.log("root navigation 0 ", resp);
         if (resp && resp.user) {
-          await authAdapter.loginAdapter(dispatch, resp);
+          dispatch(restoreToken(resp))
           console.log("root navigation ", resp.user);
         }
       } catch (error) {
@@ -28,7 +29,7 @@ const RootNavigation = () => {
       }
 
     })()
-  }, [])
+  }, []);
  
   return (
     <NavigationContainer>

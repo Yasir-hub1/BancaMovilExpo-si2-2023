@@ -11,10 +11,10 @@ const AuthStack = () => {
       screenOptions={{
         headerShown: false,
       }}
-      // initialRouteName={config.routes.Login}
+      initialRouteName={config.routes.Login}
     >
 
-      <authStack.Screen name={config.routes.Onboarding} component={Onboarding} />
+      {/* <authStack.Screen name={config.routes.Onboarding} component={Onboarding} /> */}
       <authStack.Screen name={config.routes.Login} component={Login} />
       <authStack.Screen name={config.routes.Sign_up} component={SignUp} />
 

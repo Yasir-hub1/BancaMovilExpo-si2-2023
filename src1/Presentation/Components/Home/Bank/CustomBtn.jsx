@@ -6,18 +6,11 @@ import CustomModal from './CustomModal';
 import { Image as img } from '../../../Assets/Image/path';
 const CustomBtn = ({navigation}) => {
     
-    const [modalVisible, setModalVisible] = useState(false);
-    const [stateTypeBtn, setStateTypeBtn] = useState(0)
-
-    const openModal = () => {
-
-        setModalVisible(true);
-    };
-
-    const closeModal = () => {
-
-        setModalVisible(false);
-    };
+    function navigationScreenOptions(screen) {
+        console.log("screen ", screen);
+       
+        navigation.navigate(screen);
+    }
 
 
     return (
@@ -25,7 +18,7 @@ const CustomBtn = ({navigation}) => {
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { openModal(); setStateTypeBtn(1) }}
+                onPress={() =>  navigationScreenOptions(config.routes.CobrarQr)}
 
             >
                 <Image
@@ -41,7 +34,7 @@ const CustomBtn = ({navigation}) => {
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { openModal(); setStateTypeBtn(2) }}
+                onPress={() =>  navigationScreenOptions(config.routes.PagarQr)}
             >
                 <Image
                   source={img.qrScan}
@@ -50,7 +43,7 @@ const CustomBtn = ({navigation}) => {
                 <Text style={styles.text}>Pagar QR</Text>
             </TouchableOpacity>
             
-            <CustomModal visible={modalVisible} onClose={closeModal} typeBtn={stateTypeBtn} navigation={navigation}/>
+            {/* <CustomModal visible={modalVisible} onClose={closeModal} typeBtn={stateTypeBtn} navigation={navigation}/> */}
         </View>
     );
 };

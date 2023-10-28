@@ -12,7 +12,12 @@ import { useDispatch } from 'react-redux'
 const ViewProfile = ({ navigation }) => {
     const dispatch = useDispatch();
     const handleLogout = async () => {
-        await authAdapter.logoutAdapter(dispatch);
+        try {
+            await authAdapter.logoutAdapter(dispatch);
+            
+        } catch (error) {
+            console.log("fornt cierre",error.message);
+        }
     };
     return (
         <SafeAreaView style={styles.SafeContainer} >

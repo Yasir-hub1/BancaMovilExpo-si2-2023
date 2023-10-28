@@ -1,5 +1,5 @@
 export const config = {
-  BASE_URL: "",
+  BASE_URL: "http://192.168.100.178:8000/api",
   NOMBRE_APP: "GRINGOTTS",
 
   /* COLORES DE WORKCORP */
@@ -18,12 +18,13 @@ export const config = {
     Onboarding: "Onboarding",
 
 
-    /* RUTAS PARA LA NAVEGACION INTERNA DE COTIZACION */
-    CreateQuotation: "createQ",
-    ListViewQuotation: "ListViewQ",
+    /* RUTAS PARA LA NAVEGACION INTERNA DE BOTONES DE QR */
+    CobrarQr: "CobrarQr",
+    PagarQr: "PagarQr",
+    UltMonv:"UltMov",
+     UltMovView:"UltMovView",
 
-    /* SPECIES */
-    ViewSpecies: "ViewSpecies",
+
 
     /* CONTACTS */
     ListViewContacts: "ListViewC",

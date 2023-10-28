@@ -1,14 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ListViewQuotation = () => {
+export default function CobrarQr() {
   return (
     <View>
-      <Text>ListViewQuotation</Text>
+      <Text>CobrarQr</Text>
     </View>
   )
 }
-
-export default ListViewQuotation
 
 const styles = StyleSheet.create({})

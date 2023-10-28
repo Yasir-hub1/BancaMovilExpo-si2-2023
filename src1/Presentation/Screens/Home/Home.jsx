@@ -3,9 +3,9 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import {
   CardTotalQuote,
-  RecentQuotesList,
+  UlMov,
   CustomBtn
-} from "../../Components/Home/Quotation/index";
+} from "../../Components/Home/Bank/index";
 import { config } from '../../../Config';
 import { Image as img } from '../../Assets/Image/path';
 
@@ -17,7 +17,7 @@ const Home = ({ navigation }) => {
       
       <View style={styles.header}>
 
-        <Text style={styles.headerText}>Hola,<Text style={{ fontWeight: "600" }}> {user}!</Text>  </Text>
+        <Text style={styles.headerText}>Hola,<Text style={{ fontWeight: "600" }}> {user.username}!</Text>  </Text>
 
         <TouchableOpacity
           onPress={() => navigation.navigate(config.routes.viewProfile)}
@@ -36,7 +36,7 @@ const Home = ({ navigation }) => {
 
       {/* LISTA DE COTIZACIONES RECIENTES */}
 
-      <RecentQuotesList navigation={navigation} />
+      <UlMov navigation={navigation} />
 
 
     </View>
