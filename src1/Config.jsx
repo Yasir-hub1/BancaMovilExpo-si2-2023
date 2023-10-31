@@ -1,8 +1,8 @@
 export const config = {
-  BASE_URL: "http://192.168.100.178:8000/api",
+  BASE_URL: "http://18.230.186.240/api",
   NOMBRE_APP: "GRINGOTTS",
 
-  /* COLORES DE WORKCORP */
+  /* COLORES  */
   COLOR_RED: "#ff3838",
   COLOR_YELOW: "#fff200",
   COLOR_BLACK: "#3d3d3d",

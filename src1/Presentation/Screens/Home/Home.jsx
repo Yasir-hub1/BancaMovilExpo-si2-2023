@@ -28,13 +28,13 @@ const Home = ({ navigation }) => {
 
       </View>
 
-      {/* CARD DE TOTAL DE COTIZACIONES */}
+      {/* CARD DE TOTAL DE EXTRACTO */}
       <CardTotalQuote title="Caja de Ahorro" value={400} />
 
-      {/* BTNS PARA COTIZACION Y CLIENTES */}
+      {/* BTNS PARA QRS  */}
       <CustomBtn navigation={navigation} />
 
-      {/* LISTA DE COTIZACIONES RECIENTES */}
+      {/* LISTA DE Extractos RECIENTES */}
 
       <UlMov navigation={navigation} />
 
