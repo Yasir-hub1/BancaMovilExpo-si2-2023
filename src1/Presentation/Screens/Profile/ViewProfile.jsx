@@ -3,7 +3,7 @@ import React from 'react'
 import { Avatar, Icon } from 'react-native-elements'
 import { Image as img } from '../../Assets/Image/path'
 import { config } from '../../../Config'
-import { ListItem } from '@rneui/themed';
+
 import CustomListItem from '../../Components/Home/Profile/CustomListItem'
 import CustomButton from '../../Components/Button/CustomButton'
 import { authAdapter } from '../../../Adapters/AuthAdapter'

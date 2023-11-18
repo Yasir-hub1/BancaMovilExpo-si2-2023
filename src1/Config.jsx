@@ -1,5 +1,5 @@
 export const config = {
-  BASE_URL: "http://18.230.186.240/api",
+  BASE_URL: "http://192.168.100.254:8000/api",
   NOMBRE_APP: "GRINGOTTS",
 
   /* COLORES  */

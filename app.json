@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Cotizaciones",
-    "slug": "Cotizaciones",
+    "name": "Gringotts",
+    "slug": "Gringotts",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ryac.gringotts"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ryac.gringotts"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "edb64e13-dab7-4b3d-9c60-9a84a33eca4f"
+      }
     }
   }
 }

@@ -14,7 +14,6 @@ export const Image=
         infoUser:require("../Image/Company/InfoUser.png"),
         iconBranchOffice:require("../Image/Company/branchOffice.png"),
         iconWK:require("../Image/Company/infoWK.png"),
-        logoWorkCorp:require("../Image/Company/logo.png"),
 
 
 

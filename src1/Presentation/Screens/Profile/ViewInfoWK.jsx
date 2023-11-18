@@ -58,13 +58,7 @@ const ViewInfoWK = () => {
       <View style={styles.headerContainer}>
 
         <View style={styles.coverPhoto} />
-        <View style={styles.profileContainer}>
-          <Image
-            style={styles.profilePhoto}
-            source={img.logoWorkCorp}
-          />
-          <Text style={styles.nameText}>Empresa de Desarrollo de Software</Text>
-        </View>
+       
       </View>
 
       <View style={styles.section}>
