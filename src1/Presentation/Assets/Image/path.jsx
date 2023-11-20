@@ -29,7 +29,10 @@ export const Image=
 
         /* icon btn qr */
         qrScan:require("../../Assets/Image/Quote/scanQr.png"),
-        qrGenerate:require("../../Assets/Image/Quote/generateQr.png")
+        qrGenerate:require("../../Assets/Image/Quote/generateQr.png"),
+
+        /* icono de mov */
+        iconMov:require("../../Assets/Image/Quote/extract.png"),
 
 
     };

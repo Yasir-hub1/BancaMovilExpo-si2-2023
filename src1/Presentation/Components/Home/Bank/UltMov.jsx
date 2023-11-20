@@ -3,33 +3,38 @@ import React, { useState, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native';
 import filter from 'lodash.filter';
 import { config } from '../../../../Config';
-
+import { movimientoAdapter } from '../../../../Adapters/MovimientoAdapter';
+import { useSelector } from 'react-redux';
+import { Image as img } from '../../../Assets/Image/path';
 const API = "https://randomuser.me/api/?results=30";
-const UltMov = ({navigation}) => {
+const UltMov = ({ navigation }) => {
 
     const [isLoading, setisLoading] = useState(false);
-    const [Data, setData] = useState([]);
+    const [getMov, setGetMov] = useState([])
 
+
+    const cuentaUsuario = useSelector(state => state.user);
+    let { cuenta, user, cliente } = cuentaUsuario;
 
     useEffect(() => {
-
-        fetchData(API);
+        getMovimiento()
     }, [])
 
-    const fetchData = async (url) => {
+    async function getMovimiento() {
         try {
             setisLoading(true);
-            const response = await fetch(url);
-            const json = await response.json();
-            setData(json.results);
-            // console.log("jsono ", json.results);
-
+            let nroCuenta = cuenta[0].numeroCuenta;
+            let resp = await movimientoAdapter.obtenerMovimientos(nroCuenta);
+            console.log("respFRONT ", resp)
+            setGetMov(resp);
             setisLoading(false);
         } catch (error) {
-            console.log("error API", error)
+            console.log("err FRONT getMov", error)
             setisLoading(false);
         }
     }
+
+
     if (isLoading) {
         return (
             <View style={styles.viewActivity}>
@@ -39,7 +44,7 @@ const UltMov = ({navigation}) => {
     }
 
 
-    const navigationScreen=(screen)=>{
+    const navigationScreen = (screen) => {
         navigation.navigate(screen);
     }
 
@@ -49,23 +54,24 @@ const UltMov = ({navigation}) => {
 
             <View style={styles.header}>
                 <Text style={styles.txtHeader}>Ultimos Movimientos</Text>
-                <TouchableOpacity onPress={()=>navigationScreen(config.routes.UltMovView)}>
+                <TouchableOpacity onPress={() => navigationScreen(config.routes.UltMovView)}>
                     <Text style={styles.txtViewMore}>Ver más</Text>
                 </TouchableOpacity>
             </View>
 
             <FlatList
-                data={Data}
-                keyExtractor={(item) => item.login.username}
+                data={getMov}
+                keyExtractor={(item) => item.id}
                 showsVerticalScrollIndicator={false}
+              
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity>
                             <View style={styles.itemContainer}>
-                                <Image source={{ uri: item.picture.thumbnail }} style={styles.image} />
+                                <Image source={img.iconMov} style={styles.image} />
                                 <View >
-                                    <Text style={styles.textName}>{item.name.first} </Text>
-                                    <Text style={styles.textEmail} >{item.name.first} </Text>
+                                    <Text style={styles.textName}>{item.descripcion} </Text>
+                                    <Text style={styles.textEmail} >{item.fecha} </Text>
                                 </View>
 
                             </View>
