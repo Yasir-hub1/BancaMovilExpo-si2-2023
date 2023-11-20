@@ -1,10 +1,34 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, StyleSheet, TouchableOpacity, Image, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { config } from '../../../../Config';
 import { Image as img } from '../../../Assets/Image/path';
-const CardTotalQuote = ({ title, value }) => {
+import { useSelector } from 'react-redux';
+import { cuentaAdapter } from '../../../../Adapters/CuentaAdapter';
+
+
+const CardTotalQuote = ({ title }) => {
+    const cuenta = useSelector((state) => state.user.cuenta);
+    const [ObtenerCuenta, setObtenerCuenta] = useState([]);
+
+    console.log("info user  cuenta ", cuenta);
+    useEffect(() => {
+        obtenerCuenta()
+    }, [])
+    
+    async function obtenerCuenta(){
+      try {
+        let id_cuenta=cuenta[0].id;
+        let resp=await cuentaAdapter.obtenerCuentaPorID(id_cuenta);
+        console.log("resp ",resp);
+        setObtenerCuenta(resp)
+      } catch (error) {
+        console.log("err" ,error)
+      }
+    }
+
+    // console.log("numeroCuenta ",ObtenerCuenta)
     return (
         // <TouchableOpacity style={{ marginVertical: 10 }}>
         <LinearGradient
@@ -18,12 +42,12 @@ const CardTotalQuote = ({ title, value }) => {
                 <View style={styles.textContainer}>
 
                     <Text style={styles.title}>{title}</Text>
-                    <Image
-                        source={img.todoList}
-                        style={[styles.image, { tintColor: "black", right: 90, top: 30 }]}
-                    />
+                    <Text style={{fontSize:12}}>Nro Cuenta: {ObtenerCuenta.numeroCuenta}</Text>
+                    <Text style={{fontSize:12}}>Estado : {ObtenerCuenta.estadoCuenta}</Text>
+                   
+                   
                 </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>obtenerCuenta()}>
                     <Image
                         source={img.reload}
                         style={[styles.image, { marginLeft: 50, bottom: 30 }]}
@@ -32,7 +56,7 @@ const CardTotalQuote = ({ title, value }) => {
 
             </View>
 
-            <Text style={styles.value}>{value} Bs</Text>
+            <Text style={styles.value}>{ObtenerCuenta.saldo} Bs</Text>
         </LinearGradient>
 
         // </TouchableOpacity>
@@ -63,7 +87,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         alignSelf: 'flex-end',
-        bottom: 10,
+        // bottom: 10,
         right: 20
     },
     image: {
@@ -79,6 +103,7 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         marginLeft: 10,
+       
         justifyContent: 'space-between',
         alignSelf: "flex-end"
     },

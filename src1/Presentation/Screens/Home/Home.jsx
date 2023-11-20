@@ -8,10 +8,11 @@ import {
 } from "../../Components/Home/Bank/index";
 import { config } from '../../../Config';
 import { Image as img } from '../../Assets/Image/path';
+import { cuentaAdapter } from '../../../Adapters/CuentaAdapter';
 
 const Home = ({ navigation }) => {
   const user = useSelector((state) => state.user.user);
-  console.log("info user  HOME ", user);
+
   return (
     <View style={styles.container}>
       
@@ -29,7 +30,7 @@ const Home = ({ navigation }) => {
       </View>
 
       {/* CARD DE TOTAL DE EXTRACTO */}
-      <CardTotalQuote title="Caja de Ahorro" value={400} />
+      <CardTotalQuote title="Caja de Ahorro"  />
 
       {/* BTNS PARA QRS  */}
       <CustomBtn navigation={navigation} />
