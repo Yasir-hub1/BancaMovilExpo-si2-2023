@@ -8,6 +8,7 @@ import CreateContacts from "./ContactScreens/CreateContacts";
 import ViewInfoWK from "../Profile/ViewInfoWK";
 import ViewUser from "../Profile/ViewUser";
 import ViewCompany from "../Profile/ViewCompany";
+import Servicios from "./PaymentService/Servicios";
 export {
     Home,
     CobrarQr,
@@ -22,6 +23,9 @@ export {
     ViewProfile,
     ViewInfoWK,
     ViewUser,
-    ViewCompany
+    ViewCompany,
+
+    /* SERVICIOS */
+    Servicios,
 
 }

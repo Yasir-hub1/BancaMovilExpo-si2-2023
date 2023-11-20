@@ -11,6 +11,8 @@ export const config = {
   /* DATOS ALMACENADOS EN LOCAL STORAGE  */
   USER_TOKEN_KEY: "userToken",
   USER_KEY: "user",
+  USER_CLIENTE:"userCliente",
+  USER_CUENTA:"userCuenta",
   /* NAVEGACION DE AUTENTICACION */
   routes: {
     Login: "Login",
@@ -23,8 +25,8 @@ export const config = {
     PagarQr: "PagarQr",
     UltMonv:"UltMov",
      UltMovView:"UltMovView",
-
-
+     Servicios:"Servicios",
+     PagarServicio:"PServicio",
 
     /* CONTACTS */
     ListViewContacts: "ListViewC",

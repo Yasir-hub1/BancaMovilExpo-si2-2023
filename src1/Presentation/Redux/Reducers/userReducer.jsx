@@ -29,6 +29,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   userToken: null,
+  cliente:null,
+  cuenta:null,
 };
 
 
@@ -38,18 +40,25 @@ export const userSlices = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      const { user,token } = action.payload;
+      const { user,token ,cliente,cuenta} = action.payload;
       state.user = user;// alamcena en el state lo que recibe desde la vista
       state.userToken = token;
+      state.cliente=cliente;
+      state.cuenta=cuenta;
+
     },
     logout: (state) => {
       state.user = null;
       state.userToken = null;
+      state.cliente=null;
+      state.cuenta=null;
     },
     restoreToken: (state, action) => {
-      const { user, token } = action.payload;
+      const { user, token,cliente,cuenta } = action.payload;
       state.user = user;// alamcena en el state lo que recibe desde la vista
       state.userToken = token;
+      state.cliente=cliente;
+      state.cuenta=cuenta;
     }
 
   }

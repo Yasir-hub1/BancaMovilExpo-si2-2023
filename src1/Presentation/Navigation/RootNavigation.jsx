@@ -34,7 +34,7 @@ const RootNavigation = () => {
   return (
     <NavigationContainer>
       {/* <InicioStack/> */}
-      {user == null | '' ? <AuthStack /> : <HomeStack />}
+      {user == null || '' ? <AuthStack /> : <HomeStack />}
 
       {/* <ButtonTab/> */}
     </NavigationContainer>

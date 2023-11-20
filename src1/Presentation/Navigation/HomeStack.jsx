@@ -14,9 +14,11 @@ import {
   ViewUser,
   ViewCompany,
   CobrarQr,
-  PagarQr
+  PagarQr,
+  Servicios
 } from '../Screens/Home/Index';
 import UltMovView from '../Screens/Home/UltMovView';
+import PagarServicio from '../Screens/Home/PaymentService/PagarServicio';
 
 
 const Stack = createNativeStackNavigator();
@@ -51,7 +53,10 @@ function HomeStack() {
 
         <Stack.Screen name={config.routes.CobrarQr} component={CobrarQr} />
         <Stack.Screen name={config.routes.PagarQr} component={PagarQr} />
-        <Stack.Screen name={config.routes.UltMovView} component={UltMovView} />
+        <Stack.Screen name={config.routes.Servicios} component={Servicios} options={{headerTitle:"Servicios"}}/>
+        <Stack.Screen name={config.routes.PagarServicio} component={PagarServicio} options={{headerTitle:"Pagar servicio"}}/>
+
+        <Stack.Screen name={config.routes.UltMovView} component={UltMovView} options={{headerTitle:"",headerTransparent:true}} />
 
       </Stack.Group>
 
