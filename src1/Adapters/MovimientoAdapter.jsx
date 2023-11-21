@@ -9,7 +9,7 @@ async  function registrarMovimiento  (numeroCuenta,data)  {
     console.log("serBACK ",response.data);
     return response.data;
   } catch (error) {
-    console.log("serBACK ERR" + e.message);
+    console.log("serBACK ERR" + error.message);
     throw errorHandler(error)
   }
 }

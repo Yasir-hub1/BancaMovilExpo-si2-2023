@@ -1,5 +1,6 @@
 export const config = {
-  BASE_URL: "http://192.168.100.254:8000/api",
+  BASE_URL: "https://gringotts.up.railway.app/api",
+  IMAGE_PREVIEW:"https://gringotts.up.railway.app/",
   NOMBRE_APP: "GRINGOTTS",
 
   /* COLORES  */

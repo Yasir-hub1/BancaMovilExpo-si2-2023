@@ -6,7 +6,7 @@ import { config } from '../../../../Config';
 import { movimientoAdapter } from '../../../../Adapters/MovimientoAdapter';
 import { useSelector } from 'react-redux';
 import { Image as img } from '../../../Assets/Image/path';
-const API = "https://randomuser.me/api/?results=30";
+
 const UltMov = ({ navigation }) => {
 
     const [isLoading, setisLoading] = useState(false);

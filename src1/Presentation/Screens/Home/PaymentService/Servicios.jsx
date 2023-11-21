@@ -44,13 +44,13 @@ export default Servicios = ({navigation}) => {
                 }}
                 renderItem={({ item }) => {
                     return (
-                        <View>
+                        <View style={{width:150}}>
                             <TouchableOpacity
                                 style={[styles.card, { backgroundColor: config.COLOR_WHITE }]}
                                 onPress={() => {
                                     clickEventListener(item)
                                 }}>
-                                <Image style={styles.cardImage} source={{ uri: item.logo }} />
+                                <Image style={styles.cardImage} source={{ uri: config.IMAGE_PREVIEW+ item.logo }} />
                             </TouchableOpacity>
 
                             <View style={styles.cardHeader}>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     title: {
-        fontSize: 24,
+        fontSize: 18,
         flex: 1,
         alignSelf: 'center',
         fontWeight: 'bold',
